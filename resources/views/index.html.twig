@@ -1,0 +1,23 @@
+{% extends app.runvars.layout %}
+{% set active = 'homepage' %}
+
+{% block content %}
+
+    <h1>Hello</h1>
+    {% if is_granted('ROLE_USER') %}
+        Hello "{{ app.security.token.username }}".<br />
+        <a href="{{ path('logout') }}">{{ 'Logout'|trans }}</a>
+    {% else %}
+        {# You are not logged in. Please <a href="{{ path('login') }}">{{ 'connect'|trans }}</a> #}
+		<article>
+			<header>
+				<h4 style="display:inline;">Update</h4> <time>on Wednesday, in January of the year 2014 by <a href="https://plus.google.com/u/0/+EricGeorge">Eric George</a></time>
+			</header>
+			<span class="article-meat">
+				I am working almost nonstop on this site, I think I have the Template set up.
+				I am currently putting together the article database and working on a backend to tie it all together.
+			</span>
+        </article>
+    {% endif %}
+	This site is under HEAVY construction.
+{% endblock %}

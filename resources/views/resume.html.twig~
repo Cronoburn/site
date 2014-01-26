@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+{% set active = 'resume' %}
+
+{% block content %}
+<h1>Resume</h1>
+    {{ name }}<br />
+    {{ address }}<br />
+    {{ city }}<br />
+    {{ phone }}<br />
+	{% for item in records %}
+	<h1>SKILLS</h1>
+        {{ item.skills|markdown }}\n
+	<h1>WORK</h1>
+        {{ item.work }}
+    {% endfor %}
+{% endblock %}

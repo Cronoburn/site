@@ -1,0 +1,23 @@
+.external-bar {
+ position: fixed;
+}
+
+.e-messages {
+    position: fixed;
+}
+
+.e-right {
+    float: right;
+    top: 41px;
+}
+
+.e-left {
+    float: left;
+    top: 41px;
+}
+
+.e-byline {
+    left:20px;
+    background-color: silver;
+    bottom: 0px;
+}

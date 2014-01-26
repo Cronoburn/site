@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+{% set active = 'resume' %}
+
+{% block content %}
+<h1>Resume</h1>
+    {{ name }}<br />
+    {{ address }}<br />
+    {{ city }}<br />
+    {{ phone }}<br />
+    {% record in records %}
+	{{ record.skills | markdown }}
+    {% endfor %}
+{% endblock %}
