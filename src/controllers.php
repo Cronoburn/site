@@ -49,7 +49,7 @@ $app->match('/resume', function() use ($app){
 })->bind('resume');
 
 $app->match('/blog',function (Request $request) use($app) {
-   $app['twig']->render('blog.html.twig',array(
+   return $app['twig']->render('blog.html.twig',array(
         'records'=> $app['db']->fetchAll('SELECT * FROM blog_posts LIMIT 5')
    ));
 })->method('GET');
