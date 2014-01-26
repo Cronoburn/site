@@ -91,14 +91,14 @@ if (isset($app['assetic.enabled']) && $app['assetic.enabled']) {
 
     $app['assetic.asset_manager'] = $app->share(
         $app->extend('assetic.asset_manager', function($am, $app) {
-            $am->set('styles', new Assetic\Asset\AssetCache(
-                new Assetic\Asset\GlobAsset(
-                    $app['assetic.input.path_to_css'],
-                    array($app['assetic.filter_manager']->get('lessphp'))
-                ),
-                new Assetic\Cache\FilesystemCache($app['assetic.path_to_cache'])
-            ));
-            $am->get('styles')->setTargetPath($app['assetic.output.path_to_css']);
+            /*$am->set('styles', new Assetic\Asset\AssetCache(                       */
+            /*    new Assetic\Asset\GlobAsset(                                       */
+            /*        $app['assetic.input.path_to_css'],                             */
+            /*        array($app['assetic.filter_manager']->get('lessphp'))          */
+            /*    ),                                                                 */
+            /*    new Assetic\Cache\FilesystemCache($app['assetic.path_to_cache'])   */
+            /*));                                                                    */
+            /*$am->get('styles')->setTargetPath($app['assetic.output.path_to_css']); */
 
             $am->set('scripts', new Assetic\Asset\AssetCache(
                 new Assetic\Asset\GlobAsset($app['assetic.input.path_to_js']),
@@ -113,7 +113,6 @@ if (isset($app['assetic.enabled']) && $app['assetic.enabled']) {
 }
 
 $app->register(new Silex\Provider\DoctrineServiceProvider());
-$app['twig']->
 $app->register(new Nicl\Silex\MarkdownServiceProvider());
 
 return $app;
