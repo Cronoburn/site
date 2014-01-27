@@ -3,7 +3,9 @@
 
 {% block content %}
     <h1>News:</h1>
+    <ul class="media-list">
     {% for post in records %}
-        {% include 'snips/post.snip.twig' %}
+        {% include 'snips/post1.snip.twig' %}
     {% endfor %}
+    </ul>
 {% endblock %}

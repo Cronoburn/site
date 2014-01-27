@@ -16,8 +16,12 @@
     top: 41px;
 }
 
-.e-byline {
-    left:20px;
-    background-color: silver;
+.e-bottom {
     bottom: 0px;
+    width: 100%;
+    background-color: silver;
+}
+.e-byline {
+    float: right;
+    right: 20px;
 }

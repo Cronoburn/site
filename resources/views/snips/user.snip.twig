@@ -1,0 +1,5 @@
+{% if is_granted('ROLE_USER') %}
+    {{ app.security.token.username }}
+{% else %}
+    {# form(auth, {action: path('login')}) #}
+{% endif %}

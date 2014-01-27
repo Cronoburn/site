@@ -10,8 +10,20 @@ $app['runvars'] = array(
 	);
 $app['session']->getFlashBag()->add('error', "This Site is under HEAVY construction!\nProceed with caution!");
 $app['markdown.parser'] = 'extra';
+$app['blog'] = array(
+        'lastfive' => $app['db']->fetchAll('SELECT * FROM blog_posts LIMIT 5'),
+        'extra' => 'nothing'
+    );
 $app->match('/', function() use ($app) {
-    return $app['twig']->render('index.html.twig',$app['runvars']);
+    $form = $app['form.factory']->createBuilder('form')
+        ->add('user','text', array('label' => 'Username','data'=> $app['session']->get('_security.last_username')))
+        ->add('title','text', array('label'=>'Title'))
+        ->add('date','date')
+        ->add('content','textarea')
+        ->add('submit','submit')
+        ->getForm()
+    ;
+    return $app['twig']->render('index.html.twig',array($app['runvars'],'form'=> $form->createView()));
 })->bind('homepage');
 
 $app->match('/login', function(Request $request) use ($app) {
@@ -47,6 +59,11 @@ $app->match('/resume', function() use ($app){
         )
     );
 })->bind('resume');
+
+$app->match('/blog', function(Request $request) use ($app){
+    $id = $request;
+    return $app->json($id,201);
+});
 
 $app->match('/blog',function (Request $request) use($app) {
    return $app['twig']->render('blog.html.twig',array(
@@ -176,8 +193,8 @@ $app->error(function (\Exception $e, $code) use ($app) {
         default:
             $message = 'We are sorry, but something went terribly wrong.';
     }
-
-    return new Response($message, $code);
+    $app['session']->getFlashBag()->add('error',"$message $code");
+    return new Response($app['twig']->render('layout.html.twig',$message, $code));
 });
 
 return $app;

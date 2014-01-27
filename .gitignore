@@ -1,3 +1,4 @@
 /composer.lock
 /resources/cache/*
 /resources/log/*
+/resources/config/*

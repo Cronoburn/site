@@ -1,7 +1,9 @@
+<li class="media">
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">{{ post.title }}
-        <small class="pull-right">{{ post.date }}</small>
+        <img src="{{ app.request.basepath }}/img/avatar.jpg" class="media-object pull-left img-circle" />
+        <h3 class="panel-title">&nbsp;{{ post.title }}
+            <small class="pull-right">{{ post.date }}</small>
         </h3>
     </div>
     <div class="panel-body">
@@ -11,3 +13,4 @@
         &nbsp;<small class="pull-right">by: <a href="http://plus.google.com/+EricGeorge" rel="author">{{ post.user }}</a></small>
     </div>
 </div>
+</li>

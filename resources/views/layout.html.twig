@@ -13,7 +13,7 @@
     <meta name="author" content="">
 
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet/less" href="{{ app.request.basepath }}/assets/css/less/bootstrap/less">
+    <link rel="stylesheet/less" href="{{ app.request.basepath }}/assets/css/less/bootstrap.less">
     <link rel="stylesheet" href="{{ app.request.basepath }}/assets/css/styles.css">
     <link rel="stylesheet" href="{{ app.request.basepath }}/assets/css/crono.css">
 
@@ -26,8 +26,8 @@
     {% set active = active|default(null) %}
     <div class="navbar navbar-fixed-top navbar-inverse">
         <div class="navbar-inner">
+                <a class="brand pull-left" href="{{ path('homepage') }}">CronoBurn</a>
             <div class="container">
-                <a class="brand" href="{{ path('homepage') }}">CronoBurn</a>
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li {% if 'homepage' == active %}class="active"{% endif %}><a href="{{ path('homepage') }}">{{ 'Homepage'|trans }}</a></li>
@@ -87,8 +87,10 @@
 	</div>
 	<div class="external-bar e-right">
 	</div>
-	<div class="external-bar e-byline">
-	Site by <a href="https://plus.google.com/+EricGeorge/" rel="publisher">{{ app.runvars.author }}</a> &copy;2014
+	<div class="external-bar e-bottom">
+        <div class="e-byline">
+	        Site by <a href="https://plus.google.com/+EricGeorge/" rel="publisher">{{ app.runvars.author }}</a> &copy;2014
+        </div>
 	</div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ app.request.basepath }}/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
